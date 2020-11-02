@@ -9,8 +9,11 @@ jobs:
       fail-fast: false
       matrix:
         laravel: [8.*, 7.*, 6.*, 5.8]
-        php: [7.4, 7.3]
+        php: [8.0, 7.4, 7.3]
         os: [ubuntu-latest]
+      exclude:
+        - laravel: 5.8
+          php: 8.0
     name: Laravel ${{ matrix.laravel }} PHP${{ matrix.php }} on ${{ matrix.os }}
     container:
       image: lorisleiva/laravel-docker:${{ matrix.php }}
